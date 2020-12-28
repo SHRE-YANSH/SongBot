@@ -6,7 +6,7 @@ from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.types import InlineKeyboardButton
 from youtubesearchpython import VideosSearch
 from Bot.utils import ignore_blacklisted_users, get_arg
-from Bot import app
+from Bot import app, LOGGER
 from Bot.sql.chat_sql import add_chat_to_db
 
 
@@ -39,9 +39,10 @@ async def song(client, message):
     audio = yt.streams.filter(only_audio=True).first()
     try:
         download = audio.download(filename=f"{str(user_id)}")
-    except Exception:
+    except Exception as ex:
         await status.edit("Failed to download song")
-        return
+        LOGGER.error(ex)
+        return ""
     rename = os.rename(download, f"{str(user_id)}.mp3")
     await app.send_chat_action(message.chat.id, "upload_audio")
     await app.send_audio(
