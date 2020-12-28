@@ -1,10 +1,6 @@
-import re
 from pyrogram import Client, filters
 import asyncio
-import json
-import shutil
 import os
-import requests
 from pytube import YouTube
 from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.types import InlineKeyboardButton
