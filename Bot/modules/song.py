@@ -17,7 +17,7 @@ def yt_search(song):
         return False
     else:
         video_id = result["result"][0]["id"]
-        url = f"https://www.youtube.com/watch?v={video_id}"
+        url = f"https://youtu.be/{video_id}"
         return url
 
 
